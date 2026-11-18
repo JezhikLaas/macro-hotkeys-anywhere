@@ -1,0 +1,59 @@
+<div class="macro-hotkeys-anywhere__root">
+<section class="macro-hotkeys-anywhere__lists">
+  <p class="hint">{{localize "MACRO_HOTKEYS_ANYWHERE.Config.intro"}}</p>
+
+  {{#each sections}}
+    <fieldset class="macro-hotkeys-anywhere__section">
+      <legend>{{title}}</legend>
+      <p class="hint">{{hint}}</p>
+
+      {{#if rows.length}}
+        <ol class="macro-hotkeys-anywhere__rows">
+          {{#each rows}}
+            <li class="macro-hotkeys-anywhere__row{{#if problem}} has-problem{{/if}}" data-source="{{../source}}" data-id="{{id}}">
+              {{#if ../editable}}
+                <button type="button" class="macro-hotkeys-anywhere__key{{#if recording}} is-recording{{/if}}"
+                        data-action="record" data-label="{{idleLabel}}"
+                        {{#if recording}}data-{{../recordAttribute}}{{/if}}
+                        data-tooltip="MACRO_HOTKEYS_ANYWHERE.Config.recordTooltip">{{keyLabel}}</button>
+                <select name="{{../source}}.{{id}}.macroUuid" aria-label="{{localize 'MACRO_HOTKEYS_ANYWHERE.Config.macro'}}">
+                  {{selectOptions ../macroChoices selected=macroUuid valueAttr="value" labelAttr="label"
+                                  blank=(localize "MACRO_HOTKEYS_ANYWHERE.Config.chooseMacro")}}
+                </select>
+                <button type="button" class="icon fa-solid fa-eraser" data-action="clearKey"
+                        data-tooltip="MACRO_HOTKEYS_ANYWHERE.Config.clearKey"
+                        aria-label="{{localize 'MACRO_HOTKEYS_ANYWHERE.Config.clearKey'}}"></button>
+                <button type="button" class="icon fa-solid fa-trash" data-action="remove"
+                        data-tooltip="MACRO_HOTKEYS_ANYWHERE.Config.remove"
+                        aria-label="{{localize 'MACRO_HOTKEYS_ANYWHERE.Config.remove'}}"></button>
+              {{else}}
+                <span class="macro-hotkeys-anywhere__key is-readonly">{{keyLabel}}</span>
+                <span class="macro-hotkeys-anywhere__macro">{{macroLabel}}</span>
+              {{/if}}
+              {{#if problem}}<p class="macro-hotkeys-anywhere__problem">{{problem}}</p>{{/if}}
+              {{#if note}}<p class="macro-hotkeys-anywhere__note">{{note}}</p>{{/if}}
+            </li>
+          {{/each}}
+        </ol>
+      {{else}}
+        <p class="macro-hotkeys-anywhere__empty">{{localize "MACRO_HOTKEYS_ANYWHERE.Config.empty"}}</p>
+      {{/if}}
+
+      {{#if editable}}
+        <button type="button" data-action="add" data-source="{{source}}" {{disabled cannotAdd}}>
+          <i class="fa-solid fa-plus" inert></i> {{localize "MACRO_HOTKEYS_ANYWHERE.Config.add" max=@root.maxHotkeys}}
+        </button>
+      {{/if}}
+    </fieldset>
+  {{/each}}
+</section>
+
+<footer class="form-footer">
+  <button type="button" data-action="cancel">
+    <i class="fa-solid fa-xmark" inert></i> {{localize "MACRO_HOTKEYS_ANYWHERE.Config.cancel"}}
+  </button>
+  <button type="submit">
+    <i class="fa-solid fa-floppy-disk" inert></i> {{localize "MACRO_HOTKEYS_ANYWHERE.Config.save"}}
+  </button>
+</footer>
+</div>

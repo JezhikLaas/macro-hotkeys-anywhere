@@ -1,0 +1,9 @@
+{
+  "name": "macro-hotkeys-anywhere",
+  "private": true,
+  "description": "Development tooling only. The module itself has no build step and no dependencies.",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test"
+  }
+}

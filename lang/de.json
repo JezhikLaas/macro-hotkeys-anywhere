@@ -1,0 +1,56 @@
+{
+  "MACRO_HOTKEYS_ANYWHERE": {
+    "Settings": {
+      "menu": {
+        "name": "Makro-Hotkeys",
+        "label": "Hotkeys konfigurieren",
+        "hint": "Makros an Tastenkombinationen binden, die auch beim Tippen in Textfeldern, Chat und Editoren funktionieren."
+      }
+    },
+    "Config": {
+      "title": "Makro-Hotkeys",
+      "intro": "Diese Hotkeys lösen auch aus, während du in einem Textfeld schreibst. Klicke auf das Tastenfeld und drücke die Kombination; Rücktaste löscht sie, Escape bricht ab.",
+      "user": {
+        "title": "Meine Hotkeys",
+        "hint": "Nur für dich. Sie haben Vorrang vor den Hotkeys für alle."
+      },
+      "world": {
+        "title": "Hotkeys für alle",
+        "hint": "Von der SL festgelegt, aktiv für alle Nutzer (sofern sie das Makro ausführen dürfen)."
+      },
+      "macro": "Makro",
+      "chooseMacro": "— Makro wählen —",
+      "missingMacro": "Fehlendes Makro ({uuid})",
+      "noKey": "Keine Taste",
+      "pressKeys": "Tasten drücken …",
+      "recordTooltip": "Klicken und Tastenkombination drücken",
+      "clearKey": "Taste löschen",
+      "remove": "Hotkey entfernen",
+      "add": "Hotkey hinzufügen (max. {max})",
+      "empty": "Noch keine Hotkeys.",
+      "overridesWorld": "Ersetzt einen Hotkey für alle mit denselben Tasten.",
+      "overriddenByUser": "Für dich durch einen eigenen Hotkey ersetzt.",
+      "fixProblems": "Bitte zuerst die markierten Hotkeys korrigieren.",
+      "saved": "Hotkeys gespeichert.",
+      "cancel": "Abbrechen",
+      "save": "Speichern"
+    },
+    "Problems": {
+      "noMacro": "Wähle ein Makro.",
+      "noKey": "Drücke eine Tastenkombination.",
+      "needsModifier": "Braucht Strg oder Alt (nur F1–F24 gehen allein), sonst stört es beim Tippen.",
+      "protected": "Diese Taste ist für den Browser reserviert.",
+      "duplicate": "Diese Tasten sind in dieser Liste doppelt belegt."
+    },
+    "Keys": {
+      "ctrl": "Strg",
+      "alt": "Alt",
+      "shift": "Umschalt"
+    },
+    "Errors": {
+      "macroMissing": "Makro-Hotkey: Das Makro {uuid} existiert nicht mehr.",
+      "noPermission": "Makro-Hotkey: Du darfst das Makro „{name}“ nicht ausführen.",
+      "macroFailed": "Makro-Hotkey: Das Makro „{name}“ ist fehlgeschlagen, siehe Konsole."
+    }
+  }
+}

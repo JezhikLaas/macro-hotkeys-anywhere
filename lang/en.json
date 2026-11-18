@@ -1,0 +1,56 @@
+{
+  "MACRO_HOTKEYS_ANYWHERE": {
+    "Settings": {
+      "menu": {
+        "name": "Macro hotkeys",
+        "label": "Configure hotkeys",
+        "hint": "Bind macros to key combinations that also work while typing in text fields, chat and editors."
+      }
+    },
+    "Config": {
+      "title": "Macro Hotkeys",
+      "intro": "These hotkeys also fire while you type in a text field. Click the key field and press the combination; Backspace clears it, Escape cancels.",
+      "user": {
+        "title": "My hotkeys",
+        "hint": "Only for you. They take precedence over the hotkeys for everyone."
+      },
+      "world": {
+        "title": "Hotkeys for everyone",
+        "hint": "Defined by the GM, active for every user (if they may execute the macro)."
+      },
+      "macro": "Macro",
+      "chooseMacro": "— choose a macro —",
+      "missingMacro": "Missing macro ({uuid})",
+      "noKey": "No key",
+      "pressKeys": "Press keys …",
+      "recordTooltip": "Click and press a key combination",
+      "clearKey": "Clear key",
+      "remove": "Remove hotkey",
+      "add": "Add hotkey (max. {max})",
+      "empty": "No hotkeys yet.",
+      "overridesWorld": "Replaces a hotkey for everyone with the same keys.",
+      "overriddenByUser": "Replaced for you by one of your own hotkeys.",
+      "fixProblems": "Please fix the marked hotkeys first.",
+      "saved": "Hotkeys saved.",
+      "cancel": "Cancel",
+      "save": "Save"
+    },
+    "Problems": {
+      "noMacro": "Choose a macro.",
+      "noKey": "Press a key combination.",
+      "needsModifier": "Needs Ctrl or Alt (only F1–F24 work alone), otherwise typing breaks.",
+      "protected": "This key is reserved for the browser.",
+      "duplicate": "These keys are used twice in this list."
+    },
+    "Keys": {
+      "ctrl": "Ctrl",
+      "alt": "Alt",
+      "shift": "Shift"
+    },
+    "Errors": {
+      "macroMissing": "Macro hotkey: the macro {uuid} no longer exists.",
+      "noPermission": "Macro hotkey: you may not execute the macro \"{name}\".",
+      "macroFailed": "Macro hotkey: the macro \"{name}\" failed, see the console."
+    }
+  }
+}
