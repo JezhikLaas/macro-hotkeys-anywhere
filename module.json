@@ -2,7 +2,7 @@
   "id": "macro-hotkeys-anywhere",
   "title": "Macro Hotkeys Anywhere",
   "description": "Bind macros to key combinations that also work while typing in text fields, chat, journal editors and the macro editor. Personal hotkeys per user plus GM hotkeys for everyone.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "compatibility": {
     "minimum": "14",
     "verified": "14.370",

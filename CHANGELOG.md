@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.2.0 (unreleased)
 
 - **Macro hotkeys that work while typing**: a global key listener (capture phase) runs macros for configured
   key combinations in text fields, chat, journal editors, the macro editor and everywhere else.

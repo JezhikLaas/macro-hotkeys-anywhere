@@ -128,6 +128,6 @@ tests/                          node:test unit tests for pure logic
 ## Roadmap
 
 1. ~~Scaffold, pure logic + tests, listener, configuration window~~
-2. Test in a real v14 world, fix what shows up, release v0.1.0
+2. Test in a real v14 world, fix what shows up, release v0.2.0
 3. Ideas: "Assign hotkey" entry in the macro directory context menu; show the hotkey in the macro sheet;
    optional per-hotkey switch "only outside text fields".
