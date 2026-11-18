@@ -7,13 +7,16 @@ Foundry's own keybindings and the hotbar number keys are switched off as soon as
 focus. That is sensible for single keys, but it also blocks combinations such as `Ctrl+Shift+R` that
 never type anything. This module listens for its hotkeys before Foundry does, so they work everywhere.
 
-> **Status:** 0.1. Requires Foundry VTT v14.
+> **Status:** 0.2. Requires Foundry VTT v14.
 
 ## Installation
 
-In Foundry's setup screen: **Add-on Modules → Install Module**, paste the manifest URL of the latest
-release into the field at the bottom and click **Install**. Then enable **Macro Hotkeys Anywhere** in
-your world.
+In Foundry's setup screen: **Add-on Modules → Install Module**, paste the manifest URL
+of the latest release into the field at the bottom and click **Install**:
+
+```
+https://github.com/JezhikLaas/macro-hotkeys-anywhere/releases/latest/download/module.json
+```
 
 ## AI Info
 This module has been developed with the help of Claude.
@@ -37,7 +40,10 @@ record a new combination; Backspace clears it, Escape cancels.
 - Keys reserved for the browser (e.g. F5) cannot be bound.
 - **AltGr** combinations are ignored, so characters such as `@`, `€` or `{` on German keyboards keep
   working. Avoid `Ctrl+Alt` combinations on keys that produce such characters anyway.
-- A hotkey replaces whatever the key combination would otherwise do in Foundry or the browser.
+- A hotkey replaces whatever the key combination would otherwise do in Foundry or the browser. If it
+  takes over a keybinding from **Configure Controls** (Foundry's or another module's, e.g. `Ctrl+Z` for
+  undo), the configuration window names that action below the row. This is only a note; you can still
+  save.
 - On macOS, **Cmd** counts as Ctrl.
 
 ### Inside the macro
