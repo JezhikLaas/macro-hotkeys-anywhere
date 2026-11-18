@@ -30,6 +30,7 @@
       "empty": "Noch keine Hotkeys.",
       "overridesWorld": "Ersetzt einen Hotkey für alle mit denselben Tasten.",
       "overriddenByUser": "Für dich durch einen eigenen Hotkey ersetzt.",
+      "overridesKeybinding": "Übernimmt Foundry-Steuerung (Steuerung konfigurieren): {actions}.",
       "fixProblems": "Bitte zuerst die markierten Hotkeys korrigieren.",
       "saved": "Hotkeys gespeichert.",
       "cancel": "Abbrechen",

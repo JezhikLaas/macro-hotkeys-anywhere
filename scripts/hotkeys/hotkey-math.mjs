@@ -118,6 +118,45 @@ export class HotkeyMath {
   }
 
   /**
+   * Our modifier flags and the names Foundry's keybindings use for them
+   * (`KeyboardManager.MODIFIER_KEYS`).
+   */
+  static MODIFIER_NAMES = Object.freeze({ ctrl: "Control", alt: "Alt", shift: "Shift" });
+
+  /**
+   * Whether a key press with this combination would trigger a Foundry keybinding. Mirrors the
+   * key-down check of `KeyboardManager#testContext` (v14): every required modifier must be pressed,
+   * any other pressed modifier must be one of the action's optional (reserved) modifiers.
+   * @param {Combo} combo
+   * @param {object} binding  An entry of `game.keybindings.activeKeys`.
+   * @param {string} binding.key
+   * @param {string[]} [binding.requiredModifiers]
+   * @param {string[]} [binding.optionalModifiers]
+   * @returns {boolean}
+   */
+  static matchesBinding(combo, { key, requiredModifiers = [], optionalModifiers = [] } = {}) {
+    if (!combo?.key || combo.key !== key) return false;
+    for (const [flag, name] of Object.entries(HotkeyMath.MODIFIER_NAMES)) {
+      if (requiredModifiers.includes(name)) {
+        if (!combo[flag]) return false;
+      } else if (combo[flag] && !optionalModifiers.includes(name)) return false;
+    }
+    return true;
+  }
+
+  /**
+   * The keybindings a combination would take away from Foundry (our listener runs first and stops
+   * the event).
+   * @template {{key: string, requiredModifiers?: string[], optionalModifiers?: string[]}} B
+   * @param {Combo} combo
+   * @param {Iterable<B>} bindings
+   * @returns {B[]}
+   */
+  static conflictingBindings(combo, bindings) {
+    return [...(bindings ?? [])].filter(binding => HotkeyMath.matchesBinding(combo, binding));
+  }
+
+  /**
    * Ids of hotkeys whose combination occurs more than once in the same list.
    * @param {Hotkey[]} hotkeys
    * @returns {Set<string>}

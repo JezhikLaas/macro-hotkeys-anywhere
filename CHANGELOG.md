@@ -8,6 +8,8 @@
   for everyone set by the GM; personal hotkeys win on equal keys. Keys are recorded by pressing them.
 - Safety rules: typing keys need Ctrl or Alt (only F1–F24 alone), browser-reserved keys are refused, AltGr is
   ignored so characters like `@` keep working, duplicates within a list are reported.
+- The configuration window notes when a hotkey takes over a Foundry keybinding from Configure Controls
+  (e.g. Ctrl+Z for undo); saving is still allowed.
 - Script macros receive `event` and `focusedElement`.
 - Macro API: `openConfig()`, `active()`, `userHotkeys`, `worldHotkeys`, `run(macroUuid)`.
 - Project scaffold: manifest (Foundry v14), CI release workflow, English and German localization, unit tests.

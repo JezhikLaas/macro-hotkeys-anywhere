@@ -102,6 +102,9 @@ tests/                          node:test unit tests for pure logic
   (so a click on Save that caused the blur is not lost).
 - "Add" creates a row and starts recording right away.
 - Problems are shown per row; Save refuses while any row has a problem. Rows without key and macro are dropped.
+- Conflicts with Foundry keybindings (`game.keybindings.activeKeys`, matched by `HotkeyMath.matchesBinding` like
+  v14's `KeyboardManager#testContext`) are shown as a **note only**, never block Save; GM-restricted actions are
+  skipped for players.
 - Every template part renders exactly one root element (`*__root`).
 
 ## Release
@@ -119,7 +122,8 @@ tests/                          node:test unit tests for pure logic
 - To verify in a real v14 world (not coverable outside Foundry): user-scoped setting load/save and
   `onChange`, settings menu with an ApplicationV2 class, `selectOptions` with `blank`, ProseMirror journal
   editor and CodeMirror macro editor, the controls-config exclusion selector (`#controls-config`),
-  `KeyboardManager.getKeycodeDisplayString`, execution of world hotkeys by players without macro permission.
+  `KeyboardManager.getKeycodeDisplayString`, the keybinding conflict note (incl. module keybindings),
+  execution of world hotkeys by players without macro permission.
 
 ## Roadmap
 

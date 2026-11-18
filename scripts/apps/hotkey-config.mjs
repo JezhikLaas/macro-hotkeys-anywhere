@@ -115,7 +115,8 @@ export class HotkeyConfig extends HandlebarsApplicationMixin(ApplicationV2) {
         macroLabel: macroChoices.find(c => c.value === hotkey.macroUuid)?.label ?? "",
         // An empty new row is not an error yet; it is dropped on save.
         problem: problem && (hotkey.key || hotkey.macroUuid) ? game.i18n.localize(`${I18N_PREFIX}.Problems.${problem}`) : "",
-        note: !problem && combo && other.has(combo) ? game.i18n.localize(`${I18N_PREFIX}.Config.${note}`) : ""
+        note: !problem && combo && other.has(combo) ? game.i18n.localize(`${I18N_PREFIX}.Config.${note}`) : "",
+        conflict: problem ? "" : HotkeyConfig.#conflictNote(hotkey)
       };
     });
     return {
@@ -128,6 +129,22 @@ export class HotkeyConfig extends HandlebarsApplicationMixin(ApplicationV2) {
       cannotAdd: hotkeys.length >= LIMITS.MAX_HOTKEYS,
       recordAttribute: RECORD_ATTRIBUTE
     };
+  }
+
+  /**
+   * Note naming the Foundry keybindings (Configure Controls) a hotkey takes over, if any. Not an
+   * error: overriding can be intended, and in text fields those keybindings do not run anyway.
+   * Actions restricted to the GM are skipped for players, since they never run for them.
+   * @param {Hotkey} hotkey
+   * @returns {string}
+   */
+  static #conflictNote(hotkey) {
+    const candidates = (game.keybindings?.activeKeys?.get(hotkey.key) ?? [])
+      .filter(binding => !binding.restricted || game.user.isGM);
+    const names = HotkeyMath.conflictingBindings(hotkey, candidates)
+      .map(binding => game.i18n.localize(binding.name ?? binding.action));
+    if (!names.length) return "";
+    return game.i18n.format(`${I18N_PREFIX}.Config.overridesKeybinding`, { actions: [...new Set(names)].join(", ") });
   }
 
   /**

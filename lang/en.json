@@ -30,6 +30,7 @@
       "empty": "No hotkeys yet.",
       "overridesWorld": "Replaces a hotkey for everyone with the same keys.",
       "overriddenByUser": "Replaced for you by one of your own hotkeys.",
+      "overridesKeybinding": "Takes over Foundry controls (Configure Controls): {actions}.",
       "fixProblems": "Please fix the marked hotkeys first.",
       "saved": "Hotkeys saved.",
       "cancel": "Cancel",

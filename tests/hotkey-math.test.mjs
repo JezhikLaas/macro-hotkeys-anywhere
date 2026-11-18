@@ -75,6 +75,44 @@ describe("HotkeyMath.validate", () => {
   });
 });
 
+describe("HotkeyMath.matchesBinding", () => {
+  const undo = { key: "KeyZ", requiredModifiers: ["Control"], optionalModifiers: [] };
+  const paste = { key: "KeyV", requiredModifiers: ["Control"], optionalModifiers: ["Alt", "Shift"] };
+  const help = { key: "F1", requiredModifiers: [], optionalModifiers: [] };
+  it("matches the exact combination", () => {
+    assert.equal(HotkeyMath.matchesBinding(hotkey("a", "M", "KeyZ", { ctrl: true }), undo), true);
+    assert.equal(HotkeyMath.matchesBinding(hotkey("a", "M", "F1"), help), true);
+  });
+  it("needs every required modifier and the same key", () => {
+    assert.equal(HotkeyMath.matchesBinding(hotkey("a", "M", "KeyZ", { alt: true }), undo), false);
+    assert.equal(HotkeyMath.matchesBinding(hotkey("a", "M", "KeyY", { ctrl: true }), undo), false);
+  });
+  it("refuses extra modifiers unless the action reserves them", () => {
+    assert.equal(HotkeyMath.matchesBinding(hotkey("a", "M", "KeyZ", { ctrl: true, shift: true }), undo), false);
+    assert.equal(HotkeyMath.matchesBinding(hotkey("a", "M", "F1", { shift: true }), help), false);
+    assert.equal(HotkeyMath.matchesBinding(hotkey("a", "M", "KeyV", { ctrl: true, shift: true }), paste), true);
+    assert.equal(HotkeyMath.matchesBinding(hotkey("a", "M", "KeyV", { ctrl: true, alt: true, shift: true }), paste), true);
+  });
+  it("tolerates missing fields", () => {
+    assert.equal(HotkeyMath.matchesBinding(hotkey("a", "M", "F1"), { key: "F1" }), true);
+    assert.equal(HotkeyMath.matchesBinding(hotkey("a", "M", ""), { key: "" }), false);
+    assert.equal(HotkeyMath.matchesBinding(null, help), false);
+  });
+});
+
+describe("HotkeyMath.conflictingBindings", () => {
+  it("returns the matching bindings only", () => {
+    const bindings = [
+      { key: "KeyZ", requiredModifiers: ["Control"], name: "undo" },
+      { key: "KeyZ", requiredModifiers: ["Control", "Shift"], name: "redo" },
+      { key: "KeyZ", requiredModifiers: [], name: "plain" }
+    ];
+    const found = HotkeyMath.conflictingBindings(hotkey("a", "M", "KeyZ", { ctrl: true }), bindings);
+    assert.deepEqual(found.map(b => b.name), ["undo"]);
+    assert.deepEqual(HotkeyMath.conflictingBindings(hotkey("a", "M", "KeyZ", { ctrl: true }), undefined), []);
+  });
+});
+
 describe("HotkeyMath.duplicates", () => {
   it("reports every hotkey of a repeated combination", () => {
     const list = [
